@@ -1,0 +1,2 @@
+rootProject.name='HWA 5.2 External'
+include ':app'

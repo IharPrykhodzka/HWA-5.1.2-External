@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">HWA 5.2 External</string>
+    <string name="_0">0</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="division">÷</string>
+    <string name="c">C</string>
+    <string name="plusOrMinus">+/-</string>
+    <string name="percent">%</string>
+    <string name="multiplication">×</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="minus">-</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="plus">+</string>
+    <string name="point">.</string>
+    <string name="equally">=</string>
+    <string name="ln">ln</string>
+    <string name="bracket">(</string>
+    <string name="bracket2">)</string>
+    <string name="pee">π</string>
+    <string name="sin">sin</string>
+    <string name="cos">cos</string>
+    <string name="tg">tg</string>
+    <string name="ctg">ctg</string>
+    <string name="txtEngineeringOrNormal">Инженерный / Стандартный</string>
+    <string name="mc">MC</string>
+    <string name="mr">MR</string>
+    <string name="ms">MS</string>
+    <string name="oneSignBack">←</string>
+    <string name="mPlus">M+</string>
+    <string name="mMinus">M-</string>
+    <string name="xSquared">x²</string>
+    <string name="xCubed">x³</string>
+    <string name="rootAtBase2">√</string>
+    <string name="rootAtBase3">³√</string>
+    <string name="mod">Mod</string>
+    <string name="log">log</string>
+    <string name="setting">Настройки</string>
+
+
+    //Settings strings
+
+    <string name="hintEditTextToImage">Введите название картинки</string>
+    <string name="messageEditTextToImage">Введите название картинки правельно</string>
+    <string name="btnOK">Подтвердить</string>
+
+</resources>
