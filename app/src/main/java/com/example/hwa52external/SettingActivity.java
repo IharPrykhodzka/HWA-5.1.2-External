@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -48,11 +49,7 @@ public class SettingActivity extends AppCompatActivity {
                     btnOK.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            try {
-                                loadImage();
-                            }catch (NullPointerException e) {
-                                Toast.makeText(SettingActivity.this, R.string.messageEditTextToImage, Toast.LENGTH_LONG).show();
-                            }
+                            loadImage();
                         }
                     });
                 }
@@ -63,18 +60,20 @@ public class SettingActivity extends AppCompatActivity {
         if (isExternalStorageWritable()) {
 
             EditText editText = findViewById(R.id.btnEditPath);
-            String nameImage = "";
-            nameImage = editText.getText().toString();
+            String nameImage = editText.getText().toString();
 
             File picFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), nameImage);
+            if (picFile.canRead())  {
+                Intent intent = new Intent();
+                intent.putExtra("name", nameImage);
+                setResult(RESULT_OK, intent);
+                finish();
+            }else {
+                Toast.makeText(SettingActivity.this, R.string.messageEditTextToImage, Toast.LENGTH_LONG).show();
+            }
 
-            Bitmap bitmap = BitmapFactory.decodeFile(picFile.getAbsolutePath());
 
-            ImageView imageView = findViewById(R.id.backgroundViewSetting);
-            imageView.setImageBitmap(bitmap);
 
-            ImageView imageView2 = findViewById(R.id.backgroundViewPort);
-            imageView2.setImageBitmap(bitmap);
         }
     }
 

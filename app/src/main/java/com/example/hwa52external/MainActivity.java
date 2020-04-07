@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnEqually;
     private Button btnEngOrNrm;
     private Button btnEngOrNrm2;
-    private static final int REQUEST_CODE_PERMISSION_READ_STORAGE = 10;
+    private String nameFile;
 
 
     @Override
@@ -256,20 +257,41 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, SettingActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
+
             }
         });
-
-
 
         btnSetting2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, SettingActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         });
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data == null) {
+            return;
+        }
+        nameFile = data.getStringExtra("name");
+
+        File picFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), nameFile);
+
+        Bitmap bitmap = BitmapFactory.decodeFile(picFile.getAbsolutePath());
+
+//        ImageView imageView = findViewById(R.id.backgroundViewSetting);
+//        imageView.setImageBitmap(bitmap);
+
+        ImageView imageView2 = findViewById(R.id.backgroundViewPort);
+        imageView2.setImageBitmap(bitmap);
+
+
+    }
 }
+
+
