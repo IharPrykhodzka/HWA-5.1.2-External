@@ -1,25 +1,19 @@
 package com.example.hwa52external;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
+
 
 import java.io.File;
 
@@ -278,17 +272,24 @@ public class MainActivity extends AppCompatActivity {
         if (data == null) {
             return;
         }
-        nameFile = data.getStringExtra("name");
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 1) {
+                nameFile = data.getStringExtra("name");
 
-        File picFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), nameFile);
+                File picFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), nameFile);
 
-        Bitmap bitmap = BitmapFactory.decodeFile(picFile.getAbsolutePath());
+                Bitmap bitmap = BitmapFactory.decodeFile(picFile.getAbsolutePath());
 
-//        ImageView imageView = findViewById(R.id.backgroundViewSetting);
-//        imageView.setImageBitmap(bitmap);
+                ImageView imageView2 = findViewById(R.id.backgroundViewPort);
+                imageView2.setImageBitmap(bitmap);
+            }else {
+                Toast.makeText(this, "Неверный код", Toast.LENGTH_SHORT).show();
+            }
 
-        ImageView imageView2 = findViewById(R.id.backgroundViewPort);
-        imageView2.setImageBitmap(bitmap);
+        } else {
+            Toast.makeText(this, "Неверный результат", Toast.LENGTH_SHORT).show();
+        }
+
 
 
     }

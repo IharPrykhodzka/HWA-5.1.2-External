@@ -46,7 +46,7 @@
     //Settings strings
 
     <string name="hintEditTextToImage">Введите название картинки</string>
-    <string name="messageEditTextToImage">Введите название картинки правельно</string>
+    <string name="messageEditTextToImage">Картинки не найдена! Введите название картинки правельно</string>
     <string name="btnOK">Подтвердить</string>
 
 </resources>
