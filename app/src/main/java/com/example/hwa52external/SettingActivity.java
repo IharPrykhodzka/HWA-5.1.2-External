@@ -28,7 +28,7 @@ public class SettingActivity extends AppCompatActivity {
 
 
         int permissionStatus = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-        if (permissionStatus == PackageManager.PERMISSION_GRANTED) {
+        if (permissionStatus != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_PERMISSION_READ_STORAGE);
         }
